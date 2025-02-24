@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeed = 20.0f;
     private float horizontalInput;
     private float forwardInput;
+    public Rigidbody projectile;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,5 +24,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         // Rotates the vehicle based on horizontal input
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+
+        if (Input.GetKey("space"))
+        {
+            Rigidbody clone;
+            clone = Instantiate(projectile, transform.position, transform.rotation);
+        }
     }
 }
