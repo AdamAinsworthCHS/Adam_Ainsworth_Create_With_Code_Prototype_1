@@ -8,16 +8,25 @@ public class ProjectileBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        transform.position = player.transform.position;
+        if (gameObject.name != "Projectile")
+        {
+            transform.position = player.transform.position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 20);
-        if (transform.position.x > player.transform.position.x + 100 || transform.position.y > player.transform.position.y + 100 || transform.position.z > player.transform.position.z + 100 & gameObject.name != "Projectile")
+        if (gameObject.name != "Projectile")
         {
-            Destroy(gameObject);
+            transform.Translate(Vector3.forward * Time.deltaTime * 20);
+        }
+        if (transform.position.x > player.transform.position.x + 100 || transform.position.y > player.transform.position.y + 100 || transform.position.z > player.transform.position.z + 100)
+        {
+            if (gameObject.name != "Projectile")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
