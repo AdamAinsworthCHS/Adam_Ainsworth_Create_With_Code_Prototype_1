@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeed = 20.0f;
     private float horizontalInput;
     private float forwardInput;
-    public Rigidbody projectile;
+    public GameObject projectile;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey("space"))
         {
-            Rigidbody clone;
+            GameObject clone;
             clone = Instantiate(projectile, transform.position, transform.rotation);
         }
     }
